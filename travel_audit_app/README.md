@@ -96,3 +96,11 @@ travel_audit_app/
 - TODO: 附件字段仅保留入口，不做 OCR/PDF 识别
 - TODO: 缺少更复杂反舞弊（如跨月分拆报销）
 
+
+## 8. 快速演示案例
+
+已提供一份可直接复现的端到端案例说明：
+
+- `docs/case_demo.md`
+
+建议先按该文档执行，可快速看到 PASS / FAIL / MANUAL_REVIEW 的完整流程。
