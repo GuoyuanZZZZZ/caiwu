@@ -138,3 +138,17 @@ pyinstaller --noconfirm --windowed --name TravelAuditApp \
 
 - 建议在与目标系统相同的平台打包（Windows 给 Windows，macOS 给 macOS）。
 - 如需“单文件 EXE”，可尝试 `--onefile`，但首次启动会稍慢。
+
+
+## 10. 常见问题（中文乱码）
+
+如果你用 Excel 直接双击打开 CSV 出现中文乱码，通常是编码识别问题。
+
+本项目已做两件事：
+
+- 示例 CSV 使用 `UTF-8 with BOM`（`utf-8-sig`）保存，Excel 兼容性更好。
+- 程序导入 CSV 时会自动尝试 `utf-8-sig / utf-8 / gbk / gb18030` 编码。
+
+另外，审核结果导出为 CSV 时也使用 `utf-8-sig`，避免再次乱码。
+
+如果你公司统一用 Excel，建议优先使用 `.xlsx` 文件进行数据交换。

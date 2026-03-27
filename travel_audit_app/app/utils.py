@@ -8,11 +8,22 @@ import pandas as pd
 
 
 def load_dataframe(file_path: str | Path) -> pd.DataFrame:
-    """根据文件扩展名读取 CSV/Excel。"""
+    """根据文件扩展名读取 CSV/Excel。
+
+    说明：CSV 会自动尝试多种常见编码，避免中文乱码。
+    """
     path = Path(file_path)
     suffix = path.suffix.lower()
     if suffix == ".csv":
-        return pd.read_csv(path)
+        # Excel 导出的中文 CSV 常见编码：utf-8-sig / gbk / gb18030
+        encodings = ["utf-8-sig", "utf-8", "gbk", "gb18030"]
+        last_error: Exception | None = None
+        for encoding in encodings:
+            try:
+                return pd.read_csv(path, encoding=encoding)
+            except Exception as exc:  # noqa: PERF203
+                last_error = exc
+        raise ValueError(f"CSV 读取失败，请检查文件编码。最后一次错误: {last_error}")
     if suffix in {".xlsx", ".xls"}:
         return pd.read_excel(path)
     raise ValueError("仅支持 CSV / Excel 文件")

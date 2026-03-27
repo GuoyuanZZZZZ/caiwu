@@ -139,7 +139,7 @@ class AuditService:
         if path.suffix.lower() in {".xlsx", ".xls"}:
             df.to_excel(path, index=False)
         elif path.suffix.lower() == ".csv":
-            df.to_csv(path, index=False)
+            df.to_csv(path, index=False, encoding="utf-8-sig")
         else:
             raise ValueError("导出仅支持 .xlsx 或 .csv")
 
