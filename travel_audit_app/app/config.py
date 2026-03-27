@@ -1,10 +1,24 @@
 """应用配置。"""
 
+from __future__ import annotations
+
+import sys
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parents[1]
-DATA_DIR = BASE_DIR / "data"
-DB_PATH = BASE_DIR / "travel_audit.db"
+# 开发模式：以项目目录为基准
+SOURCE_BASE_DIR = Path(__file__).resolve().parents[1]
+
+# 打包模式：以可执行文件所在目录为运行根目录
+if getattr(sys, "frozen", False):
+    APP_HOME = Path(sys.executable).resolve().parent
+    BUNDLE_DIR = Path(getattr(sys, "_MEIPASS", APP_HOME))
+else:
+    APP_HOME = SOURCE_BASE_DIR
+    BUNDLE_DIR = SOURCE_BASE_DIR
+
+DATA_DIR = APP_HOME / "data"
+BUNDLED_DATA_DIR = BUNDLE_DIR / "data"
+DB_PATH = APP_HOME / "travel_audit.db"
 
 RULE_COLUMNS = [
     "rule_id",

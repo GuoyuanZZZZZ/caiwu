@@ -104,3 +104,37 @@ travel_audit_app/
 - `docs/case_demo.md`
 
 建议先按该文档执行，可快速看到 PASS / FAIL / MANUAL_REVIEW 的完整流程。
+
+## 9. 打包成免安装版本（给其他电脑直接用）
+
+如果你希望“别的电脑不用安装 Python 环境就能直接运行”，推荐使用 **PyInstaller** 打包。
+
+### 9.1 在你的打包机器上执行
+
+```bash
+cd travel_audit_app
+pip install pyinstaller
+pyinstaller --noconfirm --windowed --name TravelAuditApp \
+  --add-data "data:./data" \
+  main.py
+```
+
+打包完成后，产物位于：
+
+- `dist/TravelAuditApp/TravelAuditApp`（macOS/Linux）
+- `dist/TravelAuditApp/TravelAuditApp.exe`（Windows）
+
+### 9.2 分发给其他电脑
+
+把整个 `dist/TravelAuditApp` 文件夹拷贝到目标电脑即可运行。
+
+- 目标电脑**不需要安装 Python**
+- 首次运行会在程序同级目录自动创建：
+  - `travel_audit.db`
+  - `data/sample_rules.csv`
+  - `data/sample_claims.csv`
+
+### 9.3 注意事项
+
+- 建议在与目标系统相同的平台打包（Windows 给 Windows，macOS 给 macOS）。
+- 如需“单文件 EXE”，可尝试 `--onefile`，但首次启动会稍慢。
