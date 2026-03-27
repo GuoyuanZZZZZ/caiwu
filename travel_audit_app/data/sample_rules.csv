@@ -1,0 +1,6 @@
+﻿rule_id,rule_name,expense_type,employee_level,city_level,transport_class,max_amount,requires_preapproval,exception_allowed,rule_text
+R001,P1一线城市机票经济舱,flight,P1,tier1,economy,1500,true,false,P1员工前往一线城市机票限经济舱且单次不超过1500元，需事前审批。
+R002,P2二线城市酒店标准,hotel,P2,tier2,,600,false,true,P2员工二线城市酒店标准不超过600元/晚，可特批。
+R003,P1餐补标准,meal,P1,,,120,false,false,P1员工餐补单次不超过120元。
+R004,默认出租车标准,taxi,,,,200,false,false,出租车默认单次不超过200元。
+R005,P3高铁二等座,train,P3,tier1,second_class,800,true,false,P3员工高铁仅可报销二等座，需事前审批。

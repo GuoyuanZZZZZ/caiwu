@@ -1,0 +1,7 @@
+﻿claim_id,employee_id,employee_name,employee_level,department,trip_date,start_city,destination_city,city_level,expense_type,amount,transport_class,invoice_no,vendor,has_preapproval,special_approval,note
+C001,E1001,张三,P1,销售部,2026-03-01,杭州,上海,tier1,flight,1800,business,INV001,东方航空,false,false,超标准舱位
+C002,E1002,李四,P2,技术部,2026-03-02,南京,苏州,tier2,hotel,550,,INV002,如家酒店,false,false,
+C003,E1003,王五,P1,市场部,2026-03-02,北京,北京,,meal,90,,INV003,麦当劳,false,false,
+C004,E1004,赵六,P3,运营部,2026-03-03,广州,深圳,tier1,train,860,first_class,INV004,12306,true,false,席别不符且金额超限
+C005,E1001,张三,P1,销售部,2026-03-01,杭州,上海,tier1,flight,1800,business,INV001,东方航空,false,true,有特批
+C006,E1005,陈七,M1,行政部,2026-03-05,成都,重庆,tier2,taxi,260,,INV006,滴滴,false,false,超出租车标准
